@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>リクエストを送るやつ</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no, minimal-ui">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ message }}</p>
+        <input v-model="url">
+        <p>{{ url }}</p>
+        <button v-on:click="reverseMessage">リクエスト送信</button>
+        
+    </div>
+    <script>
+        var app5 = new Vue({
+            el: '#app',
+            data: {
+                message: 'こちらにURLを入力して下さい',
+                url: ''
+            },
+            methods: {
+                reverseMessage: function() {
+                    let posttarget = document.location.search.substring(1);
+                    let getter = posttarget + this.url;
+                    this.message = "送信完了しました";
+                    window.location.href = getter;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
