@@ -32,12 +32,13 @@
                 reverseMessage: function () {
                     let posttarget = document.location.search.substring(1);
                     let getter = posttarget + this.url;
+                    this.message = "今送ってます……"
                     this.$axios.get(getter).then(res => {
                         console.log(res)
-                        this.message = "送信できた: " + res;
+                        this.message += "送信できた: " + res.data;
                     }).catch(err => {
                         console.log(err)
-                        this.message = "なんか失敗した: " + err;
+                        this.message += "なんか失敗した: " + err;
                     })
                 }
             }
