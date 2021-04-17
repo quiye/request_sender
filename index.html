@@ -21,6 +21,7 @@
 
     </div>
     <script>
+        Vue.prototype.$axios = axios
         var app5 = new Vue({
             el: '#app',
             data: {
@@ -31,11 +32,17 @@
                 reverseMessage: function () {
                     let posttarget = document.location.search.substring(1);
                     let getter = posttarget + this.url;
-                    this.message = "送信完了しました";
-                    window.location.href = getter;
+                    this.$axios.get(getter).then(res => {
+                        console.log(res)
+                        this.message = "送信できた: " + res;
+                    }).catch(err => {
+                        console.log(err)
+                        this.message = "なんか失敗した: " + err;
+                    })
                 }
             }
         })
     </script>
 </body>
+
 </html>
