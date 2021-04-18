@@ -17,6 +17,7 @@
             <input v-model="url" style="font-size:22px;">
             <p>{{ url }}</p>
             <button v-on:click="reverseMessage" style="font-size:22px;">リクエスト送信</button>
+            <button v-on:click="clear" style="font-size:22px;">クリア</button>
         </font>
 
     </div>
@@ -40,7 +41,11 @@
                         console.log(err)
                         this.message += "なんか失敗した: " + err;
                     })
-                }
+                },
+                clear: function () {
+                    this.url = "";
+                    this.message = "クリアした";
+                },
             }
         })
     </script>
